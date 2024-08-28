@@ -1,0 +1,675 @@
+/* style.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Pre-Loader */
+.loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000; /* Ensure loader is on top */
+  background-color: #020719;
+}
+
+.bar {
+  display: inline-block;
+  width: 3px;
+  height: 20px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+  animation: scale-up4 1s linear infinite;
+}
+
+.bar:nth-child(2) {
+  height: 35px;
+  margin: 0 5px;
+  animation-delay: 0.25s;
+}
+
+.bar:nth-child(3) {
+  animation-delay: 0.5s;
+}
+
+.bar:nth-child(4) {
+  height: 35px;
+  margin: 0 5px;
+  animation-delay: 0.75s;
+}
+
+.bar:nth-child(5) {
+  animation-delay: 1s;
+}
+
+@keyframes scale-up4 {
+  20% {
+    background-color: #ffff;
+    transform: scaleY(1.5);
+  }
+  40% {
+    transform: scaleY(1);
+  }
+}
+
+
+
+/* Content */
+#content {
+  display: none; /* Initially hide the content */
+}
+
+#content.display-content {
+  display: block; /* Show the content when .display-content class is added */
+}
+
+/* Sidebar styles */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -64%; /* Start off-screen */
+    width: 64%;
+    height: 100%;
+    transition: left 0.3s ease-in-out; /* Animation transition */
+    z-index: 999; /* Ensure sidebar is above content */
+}
+
+/* Overlay styles */
+#overlay {
+    z-index: 998;
+}
+
+/* Sidebar open state */
+.sidebar-open {
+    left: 0; /* Slide in from left */
+}
+
+/* Show overlay when sidebar is open */
+.sidebar-open + .overlay {
+    display: block;
+    opacity: 1; /* Fully visible */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+}
+
+.sidebar-close {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+.nav-link:hover {
+    background-color: rgb(5, 12, 36);
+}
+
+/* Hover effect for links */
+.nav-link{
+    transition: 0.3s all;
+  }
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+  }
+  .content {
+    height: 2000px; /* Just for demonstration, you can replace this with your content */
+  }
+  #back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: none;
+    background-color: #18162e;
+    color: white;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px;
+    cursor: pointer;
+    z-index: 997;
+    transition: 0.3s all;
+    outline: none;
+  }
+
+  #back-to-top:hover {
+    background-color: #101338;
+    transform: scale(1.20) translateY(-5px);
+    transition: 0.3s all;
+  }
+  #navbar-placeholder {
+    display: none; /* Initially hidden */
+    height: 64px; /* Adjust height to match the navbar */
+  }
+  
+  .navbar-placeholder-visible {
+    display: block !important;  /* Make visible when navbar becomes sticky */
+  }
+  
+  .sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    animation: slideDown 0.5s ease;
+    z-index: 111;
+  }
+  a,button {
+  -webkit-tap-highlight-color: transparent !important;
+  outline: none !important; 
+  }
+  
+  @keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+  }
+  .btn {
+    color: rgb(17, 24, 39);
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 2px solid rgb(17, 24, 39);
+    padding: 10px 20px;
+    font-size: 17px;
+    font-weight: bold;
+    background: transparent;
+    position: relative;
+    transition: all 1s;
+    overflow: hidden;
+  }
+  
+  .btn:hover {
+    color: white;
+  }
+  
+  .btn::before {
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 0%;
+  top: 0;
+  left: -40px;
+  transform: skewX(45deg);
+  background-color: rgb(17, 24, 39);
+  z-index: -1;
+  transition: all 1s;
+  }
+  
+  .btn:hover::before {
+  width: 160%;
+  }
+  
+  .btn-white {
+    color: rgb(255, 255, 255);
+    background-color: rgb(17, 24, 39);
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 2px solid rgb(17, 24, 39);
+    padding: 10px 20px;
+    font-size: 17px;
+    font-weight: bold;
+    position: relative;
+    transition: all 0.4s;
+    overflow: hidden;
+  }
+  
+  .btn-white:hover {
+    color: rgb(17, 24, 39);
+    background-color: white;
+  }
+  
+  .btn-white::before {
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 0%;
+  top: 0;
+  left: -40px;
+  transform: skewX(45deg);
+  background-color: rgb(255, 255, 255);
+  z-index: -1;
+  transition: all 0.4s;
+  }
+  
+  .btn-white:hover::before {
+  width: 160%;
+  }
+
+  .hero .btn-white {
+    color: rgb(17, 24, 39);
+    background-color: white;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 2px solid rgb(17, 24, 39);
+    padding: 10px 20px;
+    font-size: 17px;
+    font-weight: bold;
+    position: relative;
+    transition: all 0.4s;
+    overflow: hidden;
+  }
+  
+  .hero .btn-white:hover {
+    color: rgb(255, 255, 255);
+    background-color: rgb(17, 24, 39);
+  }
+  
+  .hero .btn-white::before {
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 0%;
+  top: 0;
+  left: -40px;
+  transform: skewX(45deg);
+  background-color: rgb(255, 255, 255);
+  z-index: -1;
+  transition: all 0.4s;
+  }
+  
+  .hero .btn-white:hover::before {
+  width: 160%;
+  }
+  
+  .logo-container {
+    position: relative;
+}
+
+.logo-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -8px; /* Adjust the value to control the tilt */
+    width: 60px; /* Should match the desired tilt width */
+    height: 100%;
+    background-color: inherit; /* Inherits background color of parent */
+    transform: skewX(30deg); /* Adjust the skew angle as per your design */
+    transform-origin: top right;
+}
+
+.navbar {
+  transition: 0.3s all;
+}
+
+.sticky {
+  backdrop-filter: blur(10px); /* Adjust the blur radius as desired */
+  -webkit-backdrop-filter: blur(10px); /* For Safari */
+  background-color: rgba(2, 6, 23, 0.914); /* Adjust the background opacity as desired */
+  transition: 0.3s all;
+}
+
+.logo-container {
+  width: 16rem; /* Example: subtract 2rem from 100% width */
+  padding-left: 3.5rem;
+}
+
+@media (max-width:767px) {
+  .logo-container {
+    width: calc(100% - 7rem); /* Example: subtract 2rem from 100% width */
+    padding-left: 1.5rem;
+  }
+  .sticky {
+    backdrop-filter: blur(10px); /* Adjust the blur radius as desired */
+    -webkit-backdrop-filter: blur(10px); /* For Safari */
+    background-color: rgba(2, 6, 23); /* Adjust the background opacity as desired */
+    transition: 0.3s all;
+  }
+}
+
+
+
+/* Gallery Content */
+
+/* Style to hide overflow on body when modal is open */
+#gallery-content {
+  z-index: 999;
+}
+.stop-scrolling {
+  overflow: hidden;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+.image-modal {
+  width: 60%;
+  height: auto;
+}
+
+@media (max-width:991px) {
+  .image-modal {
+    width: 90%;
+  }
+}
+
+#modalClose {
+  padding: 20px;
+  opacity: 0.5;
+}
+
+#prevBtn, #nextBtn{
+  transition: 0.4s all;
+  background-color: rgb(7, 23, 59);
+}
+
+#prevBtn:hover,
+#nextBtn:hover {
+  background-color: rgb(15, 23, 42);
+}
+
+#prevBtn img, #nextBtn img {
+  opacity: 0.5;
+  transition: 0.4s all;
+}
+
+#prevBtn:hover,
+#nextBtn:hover, 
+#modalClose:hover,
+#prevBtn:hover img ,
+#nextBtn:hover img {
+  opacity: 1;
+  transition: 0.4s all;
+}
+
+/* Define keyframes for slide-down animation */
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Apply animation to imageContainer */
+.slide-down {
+  animation: slideDown .3s cubic-bezier(0.215, 0.910, 0.355, 1.000);
+}
+
+
+/* Slide Left Animation */
+.slide-left {
+  animation: slideLeft 0.5s forwards;
+}
+
+@keyframes slideLeft {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* Slide Right Animation */
+.slide-right {
+  animation: slideRight 0.5s forwards;
+}
+
+@keyframes slideRight {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* Slide Out Left Animation */
+.slide-out-left {
+  animation: slideOut-left 0.5s forwards;
+}
+
+@keyframes slideOut-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* Slide Out Right Animation */
+.slide-out-right {
+  animation: slideOut-right 0.5s forwards;
+}
+
+@keyframes slideOut-right {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+
+
+@media (max-width:464px) {
+  #prevBtn, #nextBtn{
+    transition: 0.4s all;
+    transform: scale(0.72);
+  }
+  #prevBtn img, #nextBtn img {
+    opacity: 0.8;
+  }
+}
+@media (min-width:464px) {
+  #prevBtn, #nextBtn{
+    top: 50%;
+  }
+}
+
+@media (max-width:420px) {
+  #prevBtn {
+    left: 1rem;
+  }
+  #nextBtn {
+    right: 1rem;
+  }
+  .logo-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -23px; /* Adjust the value to control the tilt */
+    width: 60px; /* Should match the desired tilt width */
+    height: 100%;
+    background-color: inherit; /* Inherits background color of parent */
+    transform: skewX(30deg); /* Adjust the skew angle as per your design */
+    transform-origin: top right;
+}
+}
+
+
+.form-label {
+  display: block;
+}
+.form-input {
+  width: calc(100% - 0rem); /* Adjust width as needed */
+  padding: 0.5rem 0;
+  border: none;
+  border-bottom: 1px solid #5a5a5a3b;
+  transition: border-color 0.5s ease;
+}
+.form-input:focus {
+  outline: none;
+  border-bottom: 2px solid #1c4e7c;
+}
+input[type="text"]:-webkit-autofill,
+input[type="email"]:-webkit-autofill,
+input[type="password"]:-webkit-autofill,
+input[type="tel"]:-webkit-autofill,
+input[type="text"]:-webkit-autofill:hover,
+input[type="email"]:-webkit-autofill:hover,
+input[type="password"]:-webkit-autofill:hover,
+input[type="tel"]:-webkit-autofill:hover,
+input[type="text"]:-webkit-autofill:focus,
+input[type="email"]:-webkit-autofill:focus,
+input[type="password"]:-webkit-autofill:focus,
+input[type="tel"]:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+    transition: background-color 0s, border-color 0s, color 0s;
+}
+#contactForm label {
+  font-weight: 700;
+}
+.form-shadow {
+  box-shadow: 0 0 20px rgba(41, 41, 41, 0.233);
+}
+.form-section h2{
+  padding-bottom: 20px;
+  border-bottom: 1px solid #5a5a5a3b;
+}
+
+::-webkit-scrollbar {
+  width: 15px;
+}
+::-webkit-scrollbar-thumb {
+  height: 20px;
+  background-color: rgb(2, 6, 23);
+  border-left: 1px solid rgba(255, 255, 255, 0.24);
+}
+::-webkit-scrollbar-track {
+  background-color: #bbbbbb;
+}
+
+.img-effect {
+  position: relative;
+  overflow: hidden; /* Hide anything overflowing from .img-effect */
+  display: inline-block; /* Ensure the container wraps around the image */
+  transition: 0.3s all;
+}
+
+.img-effect::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 100%; /* Start off-screen to the left */
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(270deg, transparent, rgba(255, 255, 255, 0.3), transparent); /* 270deg for left to right */
+  transition: right 0.5s; /* Smooth transition for animation */
+  z-index: 1; /* Ensure pseudo-element is above the image */
+  pointer-events: none; /* Allow hover on the image itself */
+}
+
+.img-effect:hover::before {
+  right: -100%; /* Slide in from left to right */
+}
+
+.creative-shape img {
+  width: 100%;
+  height: 55px;
+}
+
+.creative-shape {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: auto;
+  z-index: 1;
+}
+
+
+@media(max-width:399px) {
+  .carousel-content {
+    height: 180px !important;
+  }
+  
+}
+@media(min-width:400px) {
+  .carousel-content {
+    height: 220px !important;
+  }
+  
+}
+@media(min-width:464px) {
+  .carousel-content {
+    height: 250px !important;
+  }
+  
+}
+@media(min-width:768px) {
+  .carousel-content {
+    height: 350px !important;
+  }
+  
+}
+@media(min-width:1200px) {
+  .carousel-content {
+    height: 420px !important;
+  }
+  .img-effect:hover {
+    transform: scale(1.15);
+    z-index: 1;
+    transition: 0.3s all;
+  }
+}
+@media(min-width:1400px) {
+  .carousel-content {
+    height: 580px !important;
+  }
+  
+}
+
+.indicators-carousel {
+  position: absolute;
+  top: 0;
+}
+
+.header-shadow {
+  box-shadow: 0px 0px 400px rgba(25, 49, 134, 0.993) !important;
+  z-index: 11;
+}
+
+/* Custom CSS for underline effect */
+.effect {
+  position: relative;
+  color: #d1d5db; /* Text color */
+  text-decoration: none; /* Remove default underline */
+}
+
+.effect::before {
+  content: '';
+  position: absolute;
+  bottom: 15px; /* Adjust based on your design */
+  left: 10px; /* Adjust spacing from left */
+  right: 9px; /* Adjust spacing from right */
+  height: 1px;
+  background-color: transparent; /* Underline color (initially transparent) */
+  transform: scaleX(0); /* Initially scale to 0 width */
+  transform-origin: bottom left;
+  transition: transform 0.3s ease, background-color 0.3s ease; /* Add transition for both transform and background-color */
+}
+
+.effect:hover::before {
+  transform: scaleX(1); /* Scale to full width on hover */
+  background-color: white; /* Change underline color on hover */
+}
+
+.effect.active {
+  position: relative; /* Ensure position is relative for z-index */
+  padding-left: 20px; /* Adjust padding to accommodate the ball */
+}
+
+.effect.active::before {
+  content: ''; /* Empty content to create the white ball */
+  position: absolute;
+  top: 49%;
+  left: 0px; /* Adjust to position the ball */
+  transform: translateY(-50%);
+  width: 7px; /* Diameter of the ball */
+  height: 7px; /* Diameter of the ball */
+  background-color: white; /* Color of the ball */
+  border-radius: 50%; /* Makes it round */
+  z-index: 1; /* Ensure the ball appears above the underline */
+}
